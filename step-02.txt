@@ -1,0 +1,38 @@
+----------------------------------------------
+STEP-02
+MODIFIED RAILS APPLICATION 
+(SHOW HELLO ID-RUBY)
+----------------------------------------------
+1) Stop rails server
+   ctrl + C
+
+2) Create new controller 'Docker'
+   rails g controller Docker
+
+3) Update controller 'Docker' 
+   3.1) Open file to app/controller/docker_controller.rb
+   3.2) Add lines "def index" :
+
+   class DockerController < ApplicationController
+     def index
+
+     end
+   end
+
+4) Create index view 'docker'
+   4.1) Create new file index in app/views/index.html.erb
+   4.2) Add lines:
+
+   HELLO ID-RUBY
+
+   <%= DateTime.now %>
+
+5) Modified routes
+   5.1) Add lines to file config/routes.rb
+
+   root 'docker#index' 
+   # or #
+   root :to => "docker#index"
+
+6) Rerun rails server
+   rails s
