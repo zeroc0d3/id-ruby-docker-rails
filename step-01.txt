@@ -1,0 +1,26 @@
+----------------------------------------------
+STEP-01
+CREATE NEW RAILS APPLICATION
+----------------------------------------------
+1) Create new rails application
+rails new myapps
+
+Don't running!
+2) bundle install --binstubs
+# Dependency conflict with other gems
+
+3) update Gemfile
+   3.1) add unicorn in Gemfile:
+        gem 'unicorn'
+   3.2) uncomment : gem 'capistrano-rails'
+   3.3) bundle install
+
+Optional 
+4) Update binary 
+bundle config --delete bin    # Turn off Bundler's stub generator
+rails app:update:bin          # Use the new Rails 5 executables
+5) Update to repos
+git add bin                   # Add bin/ to source control
+
+6) Running rails
+   rails s
