@@ -33,6 +33,8 @@ MODIFIED RAILS APPLICATION
    root 'docker#index' 
    # or #
    root :to => "docker#index"
+   # or #
+   root to: "docker#index"
 
 6) Rerun rails server
    rails s

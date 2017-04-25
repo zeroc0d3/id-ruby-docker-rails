@@ -9,10 +9,10 @@ Don't running!
 2) bundle install --binstubs
 # Dependency conflict with other gems
 
-3) update Gemfile
+3) Update Gemfile
    3.1) add unicorn in Gemfile:
         gem 'unicorn'
-   3.2) uncomment : gem 'capistrano-rails'
+   3.2) uncomment: gem 'capistrano-rails'
    3.3) bundle install
 
 Optional 
