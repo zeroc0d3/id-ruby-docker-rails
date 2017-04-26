@@ -4,3 +4,6 @@
 [submodule "docker-rails-nginx-unicorn"]
 	path = docker-rails-nginx-unicorn
 	url = git@github.com:zeroc0d3/docker-rails-nginx-unicorn.git
+[submodule "docker-rails-nginx-unicorn-pro"]
+	path = docker-rails-nginx-unicorn-pro
+	url = git@github.com:zeroc0d3/docker-rails-nginx-unicorn-pro.git
