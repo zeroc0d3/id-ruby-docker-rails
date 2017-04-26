@@ -25,3 +25,7 @@ EXPOSE 80
 NOTE:
 >> Rebuilt docker
 docker build --no-cache -t [your_project] .
+
+eg: 
+docker build --no-cache -t zeroc0d3/id-ruby .
+
