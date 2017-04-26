@@ -12,8 +12,10 @@ Don't running!
 3) Update Gemfile
    3.1) add unicorn in Gemfile:
         gem 'unicorn'
-   3.2) uncomment: gem 'capistrano-rails'
-   3.3) bundle install
+   3.2) add tzinfo-data in Gemfile:
+        gem 'tzinfo-data'
+   3.3) uncomment: gem 'capistrano-rails'
+   3.4) bundle install
 
 Optional 
 4) Update binary 
