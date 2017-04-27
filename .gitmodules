@@ -7,3 +7,12 @@
 [submodule "docker-rails-nginx-unicorn-pro"]
 	path = docker-rails-nginx-unicorn-pro
 	url = git@github.com:zeroc0d3/docker-rails-nginx-unicorn-pro.git
+[submodule "nginx-unicorn-rails"]
+	path = nginx-unicorn-rails
+	url = git@github.com:zeroc0d3/nginx-unicorn-rails.git
+[submodule "ubuntu-ruby"]
+	path = ubuntu-ruby
+	url = git@github.com:zeroc0d3/ubuntu-ruby.git
+[submodule "ubuntu-core"]
+	path = ubuntu-core
+	url = git@github.com:zeroc0d3/ubuntu-core.git
