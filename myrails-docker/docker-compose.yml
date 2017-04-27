@@ -1,0 +1,17 @@
+version: '2'
+services:
+  app:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - /var/www/myrails_docker
+    expose:
+      - "3000"
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    links:
+      - app
+    ports:
+      - "80:80"
