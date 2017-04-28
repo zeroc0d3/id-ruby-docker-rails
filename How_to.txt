@@ -1,0 +1,32 @@
+HOW TO INSTALL
+----------------
+1) docker
+https://docs.docker.com/compose/install/
+
+Mac :
+https://www.docker.com/docker-mac
+
+Windows:
+https://www.docker.com/docker-windows
+
+2) docker-compose
+
+$ curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+$ sudo chmod +x /usr/local/bin/docker-compose
+
+or 
+
+$ pip install docker-compose
+
+3) docker-toolbox
+
+
+docker-compose.yml
+-------------------
+version: '2'
+>> Version 1 is supported by Compose up to 1.6.x. It will be deprecated in a future Compose release.
+>> Version 1 files cannot declare named volumes, networks or build arguments.
+  
+Format:
+YAML Ain't Markup Language (YAML)
