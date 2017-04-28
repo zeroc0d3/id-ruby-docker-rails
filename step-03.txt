@@ -2,8 +2,130 @@
 STEP-03
 CREATE DOCKER FILE 
 ----------------------------------------------
-Simple Docker File:
+Dockerfile Syntax:
+1) FROM <image>[:<tag>] 
+   • <image> : This is the name of the image which will be used as the base image.
+   • <tag> : This is the optional tag qualifier for that image. If any tag qualifier has not been specified, then the tag latest is assumed.
+   eg: FROM ubuntu:16.04
 
+2) MAINTAINER <author's detail>
+   author's  name & email
+   eg: MAINTAINER ZeroC0D3 Team <zeroc0d3.0912@gmail.com>
+
+3) COPY <src> ... <dst>
+   • <src> : This is the source directory, the file in the build context, or the
+directory from where the docker build subcommand was invoked.
+   • ... : This indicates that multiple source files can either be specified
+directly or be specified by wildcards.
+   • <dst> : This is the destination path for the new image into which the source
+file or directory will get copied. If multiple files have been specified, then the
+destination path must be a directory and it must end with a slash / .
+
+   eg: 
+   COPY html /var/www/html
+   COPY httpd.conf magic /etc/httpd/conf/
+
+4) ADD <src> ... <dst>
+   • <src> : This is either the source directory or the file that is in the build
+context or in the directory from where the docker build subcommand
+will be invoked. However, the noteworthy difference is that the source
+can either be a TAR file stored in the build context or be a remote URL.
+   • ... : This indicates that the multiple source files can either be specified
+directly or be specified by using wildcards.
+   • <dst> : This is the destination path for the new image into which the source
+file or directory will be copied. 
+
+   eg:
+      $ tar tf web-page-config.tar
+  
+      etc/httpd/conf/httpd.conf
+      var/www/html/index.html 
+      var/www/html/aboutus.html
+      var/www/html/images/welcome.gif
+      var/www/html/images/banner.gif
+
+5) ENV <key> <value>
+
+   • <key> : This is the environment variable
+   • <value> : This is the value that is to be set for the environment variable
+   
+   eg:
+   ENV DEBUG_LVL 3
+   ENV APACHE_LOG_DIR /var/log/apache
+
+6) USER <UID>|<UName>
+   • <UID> : This is a numerical user ID
+   • <UName> : This is a valid user Name
+   
+   eg: USER 73
+       USER 1000 (default ubuntu user)
+
+7) WORKDIR <dirpath>
+   WORKDIR instruction changes the current working directory from / to the path specified by this instruction.
+
+   <dirpath> is the path for the working directory to set in. The path can be
+either absolute or relative. In case of a relative path, it will be relative to the previous
+path set by the WORKDIR instruction. If the specified directory is not found in the
+target image filesystem, then the director will be created.
+
+   eg: WORKDIR /var/log
+
+8) VOLUME
+   • The first type is either exec or JSON array (all values must be within double-
+   quotes ( " )):
+      VOLUME ["<mountpoint>"]
+   • The second type is shell, as shown here:
+      VOLUME <mountpoint>
+
+   In the preceding line, <mountpoint> is the mount point that has to be created in the new image.
+
+9) EXPOSE <port>[/<proto>] [<port>[/<proto>]...]
+   • <port> : This is the network port that has to be exposed to the outside world.
+   • <proto> : This is an optional field provided for a specific transport protocol, such as TCP and UDP. If no transport protocol has been specified, then TCP is assumed to be the transport protocol.
+
+   eg: EXPOSE 7373/udp 8080
+
+10) RUN <command>
+    The RUN instruction is the real workhorse during the build time, and it can run any
+command.
+    RUN ["<exec>", "<arg-1>", ..., "<arg-n>"]
+Within this, the code terms mean the following:
+    • <exec> : This is the executable to run during the build time.
+    • <arg-1>, ..., <arg-n> : These are the variables (zero or more)
+number of the arguments for the executable.
+
+    eg: RUN ["bash", "-c", "rm", "-rf", "/tmp/abc"] .
+
+11) ENTRYPOINT
+    The ENTRYPOINT instruction will help in crafting an image for running an application
+(entry point) during the complete life cycle of the container, which would have
+been spun out of the image.
+
+    ENTRYPOINT <command>
+ENTRYPOINT ["<exec>", "<arg-1>", ..., "<arg-n>"]
+Within this, the code terms mean the following:
+    • <exec> : This is the executable, which has to be run during the
+             container launch time.
+    • <arg-1>, ..., <arg-n> : These are the variable (zero or more)
+numbers of arguments for the executable.
+
+12) ONBUILD <INSTRUCTION>
+    The ONBUILD instruction registers a build instruction to an image and this
+is triggered when another image is built by using this image as its base image.
+
+    <INSTRUCTION> is another Dockerfile build instruction, which will
+be triggered later. The ONBUILD instruction does not allow the chaining of another
+ONBUILD instruction.
+    
+    eg: ONBUILD ADD config /etc/appconfig
+
+
+13) .dockerignore
+    ignoring file/folder 
+
+
+Simple Docker File:
+-------------------------
 FROM ruby:2.4.1-apline
 MAINTAINER id-ruby
 EXPOSE 80
