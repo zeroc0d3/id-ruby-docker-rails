@@ -1,0 +1,81 @@
+----------------------------------------------
+STEP-05
+TDD DOCKERFILE 
+----------------------------------------------
+1) Create file in folder "spec"
+
+# spec/Dockerfile_spec.rb
+
+require "serverspec"
+require "docker"
+
+describe "Dockerfile" do
+  before(:all) do
+    image = Docker::Image.build_from_dir('.')
+
+    set :os, family: :debian
+    set :backend, :docker
+    set :docker_image, image.id
+  end
+
+  it "installs the right version of Ubuntu" do
+    expect(os_version).to include("Ubuntu 16")
+  end
+
+  def os_version
+    command("lsb_release -a").stdout
+  end
+end
+
+2) Running:
+   rspec spec/Dockerfile_spec.rb
+
+3) Add Dockerfile
+   FROM ubuntu:14.04
+   MAINTAINER ZeroC0D3 Team <zeroc0d3.0912@gmail.com>
+
+4) Rerun rspec:
+   rspec spec/Dockerfile_spec.rb
+
+5) Testing package installation:
+   
+# spec/Dockerfile_spec.rb
+
+require "serverspec"
+require "docker"
+
+describe "Dockerfile" do
+  before(:all) do
+    image = Docker::Image.build_from_dir('.')
+
+    set :os, family: :debian
+    set :backend, :docker
+    set :docker_image, image.id
+  end
+
+  it "installs the right version of Ubuntu" do
+    expect(os_version).to include("Ubuntu 16")
+  end
+
+  # This test is new
+  it "installs required packages" do
+    expect(package("nodejs")).to be_installed
+  end
+
+  def os_version
+    command("lsb_release -a").stdout
+  end
+end
+
+6) Rerun rspec:
+   rspec spec/Dockerfile_spec.rb
+
+7) Add command running in Dockerfile:
+   RUN apt-get update && apt-get install -y nodejs
+
+   FROM ubuntu:14.04
+   MAINTAINER ZeroC0D3 Team <zeroc0d3.0912@gmail.com>
+   RUN apt-get update && apt-get install -y nodejs
+
+8) Rerun rspec:
+   rspec spec/Dockerfile_spec.rb
