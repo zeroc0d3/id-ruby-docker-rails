@@ -42,7 +42,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'serverspec'
-  gem 'docker'
+  gem 'docker-api'
 end
 
 group :development do
