@@ -45,3 +45,6 @@ for production environment, set your "secret_key_base" with command:
 $ bundle exec rails secret
 
 copy and paste the "secret_key_base" result to production section in "config/secrets.yml" file
+
+
+

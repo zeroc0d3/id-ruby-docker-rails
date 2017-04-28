@@ -38,3 +38,21 @@ eg:
 docker run --env-file .env.production -p 80:80 --volumes-from gems-2.4.1 myrails-docker-unicorn-production
 
 
+NOTE:
+------
+*) Rerun the docker compose
+docker-compose build && docker-compose up --force-recreate
+
+*) Show running container docker
+docker ps
+
+*) Show the IP Address container
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [container_name_or_id]
+
+*) Login to container
+docker exec -it [container_id] bash
+
+*) Copy file host <--> container
+docker cp foo.txt [container_name]:/foo.txt
+docker cp [container_name]:/foo.txt foo.txt
+
