@@ -2,30 +2,16 @@
 STEP-03
 CREATE DOCKER FILE 
 ----------------------------------------------
-1) Create new "Dockerfile" in root folder 
-   touch Dockerfile
+Simple Docker File:
 
-2) Add Dockerfile with this line:
-
-FROM zeroc0d3/docker-rails-nginx-unicorn
-
-MAINTAINER ZeroC0D3 Team <zeroc0d3.0912@gmail.com>
-
+FROM ruby:2.4.1-apline
+MAINTAINER id-ruby
 EXPOSE 80
 
-3) Build your docker:
-   docker build -t [your_project] .
+Build Simple Docker: 
+docker build --no-cache -t zeroc0d3/id-ruby-sample .
 
-   eg: 
-   docker build -t zeroc0d3/id-ruby .
+Running Simple Docker:
+docker run -it --rm -p 80:80 zeroc0d3/id-ruby-sample
 
-4) Run your docker
-   docker run -it --rm -p 80:80 -e SECRET_KEY_BASE=secret zeroc0d3/id-ruby 
-
-NOTE:
->> Rebuilt docker
-docker build --no-cache -t [your_project] .
-
-eg: 
-docker build --no-cache -t zeroc0d3/id-ruby .
 
