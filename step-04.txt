@@ -1,0 +1,40 @@
+----------------------------------------------
+STEP-04
+DOCKER FOR RAILS 
+1) SETUP DOCKER FOR DEVELOPMENT
+2) SETUP DOCKER FOR PRODUCTION
+----------------------------------------------
+
+1) Create Data Volume to store gems in
+
+docker create -v /ruby_gems/2.4.1 --name gems-2.4.1 busybox
+
+2) Clone:
+https://github.com/zeroc0d3/nginx-unicorn-rails
+
+Follow the instruction for development or production
+
+3) For testing, clone:
+https://github.com/zeroc0d3/id-ruby-docker-rails/tree/master/myrails-docker-unicorn
+
+4) Build & Running Docker
+4.1) Development
+Build & Running Docker for development:
+docker-compose up --build
+
+4.2) Production
+Build & Running Docker for production:
+
+BUILD:
+docker build --no-cache -t [container_name] .
+
+eg:
+docker build --no-cache -t myrails-docker-unicorn-production .
+
+RUN:
+docker run --env-file .env.production -p 80:80 --volumes-from gems-2.4.1 [container_name] .
+
+eg:
+docker run --env-file .env.production -p 80:80 --volumes-from gems-2.4.1 myrails-docker-unicorn-production
+
+
