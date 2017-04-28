@@ -41,6 +41,7 @@ GEM
     airbrussh (1.2.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (7.1.4)
+    backticks (1.0.0)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.0.6)
@@ -64,6 +65,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
+    docker (0.4.0)
+      backticks (~> 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -95,6 +98,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
+    net-telnet (0.1.1)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -139,6 +143,9 @@ GEM
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
@@ -158,6 +165,17 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    serverspec (2.38.0)
+      multi_json
+      rspec (~> 3.0)
+      rspec-its
+      specinfra (~> 2.53)
+    sfl (2.3)
+    specinfra (2.67.9)
+      net-scp
+      net-ssh (>= 2.7, < 5.0)
+      net-telnet
+      sfl
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -205,6 +223,7 @@ DEPENDENCIES
   byebug
   capistrano-rails
   coffee-rails (~> 4.2)
+  docker
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -213,6 +232,7 @@ DEPENDENCIES
   rspec
   rspec-rails
   sass-rails (~> 5.0)
+  serverspec
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
