@@ -1,7 +1,7 @@
 # spec/Dockerfile_spec.rb
 
 require "serverspec"
-require "docker-api"
+require "docker"
 
 describe "Dockerfile" do
   before(:all) do

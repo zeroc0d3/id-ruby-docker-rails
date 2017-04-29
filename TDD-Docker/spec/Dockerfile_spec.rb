@@ -16,14 +16,15 @@ describe "Dockerfile" do
     expect(os_version).to include("Ubuntu 16")
   end
 
-  # This test is new
-  #it "installs required packages" do
-  #  expect(package("nodejs")).to be_installed
-  #end
-
   def os_version
     command("lsb_release -a").stdout
   end
+
+  # This test is new
+  it "installs required packages" do
+    expect(package("tmux")).to be_installed
+    expect(package("vim")).to be_installed
+    expect(package("nodejs")).to be_installed
+  end
+
 end
-
-
