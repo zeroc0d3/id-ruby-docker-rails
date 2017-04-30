@@ -1,9 +1,3 @@
-[submodule "nginx-unicorn-rails"]
-	path = nginx-unicorn-rails
-	url = git@github.com:zeroc0d3/nginx-unicorn-rails.git
-[submodule "ubuntu-ruby"]
-	path = ubuntu-ruby
-	url = git@github.com:zeroc0d3/ubuntu-ruby.git
-[submodule "ubuntu-core"]
-	path = ubuntu-core
-	url = git@github.com:zeroc0d3/ubuntu-core.git
+[submodule "docker-ubuntu-nginx-unicorn-rails"]
+	path = docker-ubuntu-nginx-unicorn-rails
+	url = https://github.com/zeroc0d3/docker-ubuntu-nginx-unicorn-rails
