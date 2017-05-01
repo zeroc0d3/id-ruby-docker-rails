@@ -1,3 +1,6 @@
 [submodule "docker-ubuntu-nginx-unicorn-rails"]
 	path = docker-ubuntu-nginx-unicorn-rails
 	url = https://github.com/zeroc0d3/docker-ubuntu-nginx-unicorn-rails
+[submodule "myrails-docker-unicorn-cap"]
+	path = myrails-docker-unicorn-cap
+	url = git@github.com:zeroc0d3/myrails-docker-unicorn-cap.git
