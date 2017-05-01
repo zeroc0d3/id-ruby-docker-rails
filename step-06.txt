@@ -1,0 +1,71 @@
+----------------------------------------------
+STEP-06
+DOCKER RAILS, UNICORN & CAPISTRANO
+----------------------------------------------
+Pull the latest repository of 
+https://github.com/zeroc0d3/id-ruby-docker-rails, or
+
+fork & clone:
+git clone https://github.com/zeroc0d3/myrails-docker-unicorn-cap 
+
+
+1) Create .env file
+   cp .env.example .env
+
+2) Get SECRET_KEY_BASE for production & development by command:
+   bundle exec rails secret
+
+3) Change all SECRET_KEY_BASE_PRODUCTION & SECRET_KEY_BASE_DEVELOPMENT with result key from point 2:
+   RAILS_ENV_PRODUCTION=production
+   SECRET_KEY_BASE_PRODUCTION=['your_key_production']
+
+   RAILS_ENV_DEVELOPMENT=development
+   SECRET_KEY_BASE_DEVELOPMENT=['your_key_development']
+
+4) Build & Run docker
+   docker-compose up --build
+
+5) Find IP Address for each container (web_dev, web_prod):
+   5.1) Show docker running 
+        docker ps
+   5.2) Find IP from docker container
+        docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [container_name/id]
+
+6) Change config deploy capistrano for docker container production & development with ip address docker from point 5:
+   config/deploy/development.rb
+   config/deploy/production.rb
+
+   eg: 172.30.0.3 (web_dev, development rails container)
+   server '172.30.0.3', user: 'root', roles: %w{app db web}
+
+7) Set SSH Key
+   Since we use default key PEM File from each :
+   docker-development/key/id_rsa
+   docker-development/key/id_rsa.pem
+   docker-development/key/id_rsa.pub
+
+   docker-production/key/id_rsa
+   docker-production/key/id_rsa.pem
+   docker-production/key/id_rsa.pub
+
+   username: root
+   password: secret
+   port: 22
+
+8) Test Remote SSH for docker container
+   ssh root@[ip_container_dev_or_production]
+   - or -
+   ssh root@[ip_container_dev_or_production] -i key/id_rsa.pem
+
+9) Define your repository github or other in file:
+   change with your own repository or forked from this repo:
+   
+   # config/deploy.rb
+   set :application, 'app'
+   set :repo_url,    'git@github.com:zeroc0d3/myrails-docker-unicorn-cap.git']
+
+10) Running deploy the capistrano rails:
+    10.1) Deploy for development
+          bundle exec cap development deploy
+    10.1) Deploy for production
+          bundle exec cap production deploy
