@@ -69,3 +69,16 @@ git clone https://github.com/zeroc0d3/myrails-docker-unicorn-cap
           bundle exec cap development deploy
     10.1) Deploy for production
           bundle exec cap production deploy
+
+
+NOTES:
+---------
+Test Running docker production & development container:
+1) Running docker compose:
+   docker-compose up
+
+2) Docker Development:
+   http://localhost:8080
+
+3) Docker Production:
+   http://localhost:8081
